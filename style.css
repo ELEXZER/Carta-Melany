@@ -1,0 +1,556 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    overflow: hidden;
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #fff9f0 0%,
+            #f4e8d5 55%,
+            #ead8bd 100%
+        );
+
+    color: #5a4031;
+}
+
+
+/* ===================================
+   ESCENA
+=================================== */
+
+.escena {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    position: relative;
+
+    padding: 20px;
+}
+
+
+/* ===================================
+   TEXTOS
+=================================== */
+
+.subtitulo {
+    font-size: 18px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 8px;
+
+    opacity: 0.8;
+}
+
+h1 {
+    font-size: clamp(38px, 7vw, 62px);
+
+    font-weight: normal;
+
+    margin-bottom: 35px;
+
+    color: #704936;
+
+    text-shadow:
+        0 2px 4px rgba(0,0,0,0.08);
+}
+
+
+/* ===================================
+   SOBRE + CARTA
+=================================== */
+
+.sobre-contenedor {
+
+    position: relative;
+
+    width: min(90vw, 520px);
+
+    height: 380px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-end;
+}
+
+
+/* ===================================
+   SOBRE
+=================================== */
+
+.sobre {
+
+    position: absolute;
+
+    bottom: 15px;
+
+    width: min(90vw, 500px);
+
+    height: 300px;
+
+    background: #e9dcc7;
+
+    border-radius: 6px;
+
+    box-shadow:
+        0 20px 45px rgba(82, 55, 35, 0.25);
+
+    cursor: pointer;
+
+    transform-style: preserve-3d;
+
+    z-index: 5;
+}
+
+
+/* ===================================
+   ESTAMPADO DE OSITOS
+=================================== */
+
+.ositos {
+
+    position: absolute;
+
+    inset: 18px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    grid-template-rows:
+        repeat(4, 1fr);
+
+    align-items: center;
+
+    justify-items: center;
+
+    opacity: 0.35;
+
+    pointer-events: none;
+
+    font-size: 28px;
+
+    transform: rotate(-3deg);
+}
+
+.ositos span:nth-child(even) {
+    transform: rotate(8deg);
+}
+
+.ositos span:nth-child(3n) {
+    transform: scale(0.85);
+}
+
+
+/* ===================================
+   FRENTE DEL SOBRE
+=================================== */
+
+.frontal {
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 68%;
+
+    background: #deceb7;
+
+    clip-path:
+        polygon(
+            0 0,
+            50% 58%,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
+
+    border-radius: 0 0 6px 6px;
+
+    z-index: 8;
+}
+
+
+/* ===================================
+   SOLAPA DEL SOBRE
+=================================== */
+
+.solapa {
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 58%;
+
+    background: #d8c5aa;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 82%
+        );
+
+    transform-origin: top center;
+
+    transition:
+        transform 1s cubic-bezier(.65,.05,.36,1);
+
+    z-index: 10;
+}
+
+
+/* ===================================
+   SELLO
+=================================== */
+
+.sello {
+
+    position: absolute;
+
+    left: 50%;
+    top: 48%;
+
+    transform: translate(-50%, -50%);
+
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background: #9c5b62;
+
+    color: #fff4ec;
+
+    font-size: 27px;
+
+    box-shadow:
+        0 5px 12px rgba(0,0,0,0.18);
+
+    z-index: 12;
+
+    transition:
+        opacity .4s ease,
+        transform .4s ease;
+}
+
+
+/* ===================================
+   CARTA
+=================================== */
+
+.carta {
+
+    position: absolute;
+
+    width: min(82vw, 390px);
+
+    min-height: 300px;
+
+    left: 50%;
+
+    bottom: 40px;
+
+    transform:
+        translate(-50%, 220px);
+
+    padding: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffdf7,
+            #f8f0df
+        );
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 15px 35px rgba(55, 36, 25, 0.25);
+
+    opacity: 0;
+
+    z-index: 4;
+
+    transition:
+        transform 1.2s cubic-bezier(.2,.75,.25,1),
+        opacity .7s ease;
+
+}
+
+
+/* ===================================
+   CONTENIDO CARTA
+=================================== */
+
+.fecha {
+
+    font-size: 15px;
+
+    margin-bottom: 25px;
+
+    color: #967363;
+
+    letter-spacing: 1px;
+}
+
+.contenido-carta {
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    color: #4e382d;
+}
+
+.contenido-carta p {
+    margin-bottom: 18px;
+}
+
+.firma {
+
+    margin-top: 28px;
+
+    font-style: italic;
+
+    color: #815266;
+}
+
+
+/* ===================================
+   ANIMACIÓN AL ABRIR
+=================================== */
+
+.sobre.abierto .solapa {
+
+    transform:
+        rotateX(180deg);
+
+    z-index: 2;
+}
+
+.sobre.abierto .sello {
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.5);
+}
+
+.sobre.abierto + .carta {
+    opacity: 1;
+
+    transform:
+        translate(-50%, -130px);
+
+    z-index: 20;
+}
+
+
+/* ===================================
+   INSTRUCCIÓN
+=================================== */
+
+.instruccion {
+
+    margin-top: 28px;
+
+    font-size: 16px;
+
+    opacity: 0.8;
+
+    transition:
+        opacity .5s ease;
+}
+
+
+/* ===================================
+   BOTÓN
+=================================== */
+
+button {
+
+    margin-top: 16px;
+
+    padding:
+        12px 25px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: #8b5961;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 7px 18px rgba(92, 53, 60, 0.25);
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
+}
+
+button:hover {
+
+    transform: translateY(-2px);
+
+    background: #744951;
+}
+
+
+/* ===================================
+   DECORACIÓN
+=================================== */
+
+.decoracion {
+
+    position: absolute;
+
+    color: #b88383;
+
+    opacity: 0.35;
+
+    font-size: 30px;
+
+    animation:
+        flotar 4s ease-in-out infinite;
+}
+
+.decoracion-1 {
+    left: 12%;
+    top: 20%;
+}
+
+.decoracion-2 {
+    right: 12%;
+    top: 25%;
+    animation-delay: 1s;
+}
+
+.decoracion-3 {
+    left: 18%;
+    bottom: 17%;
+    animation-delay: 2s;
+}
+
+.decoracion-4 {
+    right: 19%;
+    bottom: 20%;
+    animation-delay: 3s;
+}
+
+
+@keyframes flotar {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(-5deg);
+    }
+
+    50% {
+        transform:
+            translateY(-12px)
+            rotate(5deg);
+    }
+}
+
+
+/* ===================================
+   MODO ABIERTO
+=================================== */
+
+.escena.abierta .instruccion {
+
+    opacity: 0;
+}
+
+.escena.abierta button {
+
+    background: #6f4c54;
+}
+
+
+/* ===================================
+   CELULAR
+=================================== */
+
+@media (max-width: 600px) {
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    .sobre-contenedor {
+        height: 330px;
+    }
+
+    .sobre {
+        height: 240px;
+    }
+
+    .carta {
+        min-height: 260px;
+
+        padding: 24px;
+    }
+
+    .contenido-carta {
+        font-size: 16px;
+        line-height: 1.65;
+    }
+
+    .ositos {
+        font-size: 21px;
+    }
+
+    .sello {
+        width: 48px;
+        height: 48px;
+        font-size: 22px;
+    }
+}
