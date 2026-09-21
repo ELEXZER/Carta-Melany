@@ -2,6 +2,7 @@ const sobre = document.getElementById("sobre");
 const boton = document.getElementById("boton");
 const escena = document.querySelector(".escena");
 const instruccion = document.getElementById("instruccion");
+const carta = document.getElementById("carta");
 
 let abierto = false;
 
@@ -18,11 +19,16 @@ function abrirCarta() {
 
     escena.classList.add("abierta");
 
+    setTimeout(() => {
+
+        carta.classList.add("mostrar");
+
+    }, 700);
+
     boton.textContent = "Cerrar carta";
 
     instruccion.textContent =
         "Nuestra primera carta del 21 de septiembre ❤️";
-
 }
 
 
