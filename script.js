@@ -40,7 +40,13 @@ function cerrarCarta() {
 
     abierto = false;
 
-    sobre.classList.remove("abierto");
+    carta.classList.remove("mostrar");
+
+    setTimeout(() => {
+
+        sobre.classList.remove("abierto");
+
+    }, 300);
 
     escena.classList.remove("abierta");
 
